@@ -18,6 +18,8 @@ interface Product {
   };
 }
 
+type LocationKey = keyof Product['location'];
+
 interface ProductModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -87,19 +89,22 @@ const ProductModal: React.FC<ProductModalProps> = ({ isOpen, onClose, onSave, pr
     onClose();
   };
 
+  const handleLocationChange = (key: LocationKey, value: string) => {
+    setFormData(prev => ({
+      ...prev,
+      location: {
+        ...prev.location,
+        [key]: value,
+      },
+    }));
+  };
+
   const handleInputChange = (field: string, value: string | number) => {
     if (field.includes('.')) {
       const [parent, child] = field.split('.');
-      setFormData(prev => {
-        const newData = { ...prev };
-        if (parent === 'location' && child) {
-          newData.location = {
-            ...newData.location,
-            [child]: value
-          };
-        }
-        return newData;
-      });
+      if (parent === 'location' && child) {
+        handleLocationChange(child as LocationKey, value as string);
+      }
     } else {
       setFormData(prev => ({
         ...prev,
