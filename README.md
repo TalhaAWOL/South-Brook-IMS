@@ -1,0 +1,1 @@
+At the moment, demo data resides locally in the Content.ts file within the Product component. The setup is designed to transition seamlessly to live API integration once the backend endpoints are available.
