@@ -90,13 +90,16 @@ const ProductModal: React.FC<ProductModalProps> = ({ isOpen, onClose, onSave, pr
   const handleInputChange = (field: string, value: string | number) => {
     if (field.includes('.')) {
       const [parent, child] = field.split('.');
-      setFormData(prev => ({
-        ...prev,
-        [parent]: {
-          ...(prev as any)[parent],
-          [child]: value
+      setFormData(prev => {
+        const newData = { ...prev };
+        if (parent === 'location' && child) {
+          newData.location = {
+            ...newData.location,
+            [child]: value
+          };
         }
-      }));
+        return newData;
+      });
     } else {
       setFormData(prev => ({
         ...prev,
