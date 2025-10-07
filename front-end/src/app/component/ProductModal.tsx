@@ -93,7 +93,7 @@ const ProductModal: React.FC<ProductModalProps> = ({ isOpen, onClose, onSave, pr
       setFormData(prev => ({
         ...prev,
         [parent]: {
-          ...prev[parent as keyof Product],
+          ...(prev as any)[parent],
           [child]: value
         }
       }));
@@ -198,7 +198,6 @@ const ProductModal: React.FC<ProductModalProps> = ({ isOpen, onClose, onSave, pr
                     backgroundColor: themeColors.background.primary,
                     borderColor: themeColors.border.primary,
                     color: themeColors.text.primary,
-                    focusRingColor: 'rgba(22, 163, 74, 0.3)',
                   }}
                   placeholder="Enter product name"
                 />
@@ -267,7 +266,6 @@ const ProductModal: React.FC<ProductModalProps> = ({ isOpen, onClose, onSave, pr
                     backgroundColor: themeColors.background.primary,
                     borderColor: themeColors.border.primary,
                     color: themeColors.text.primary,
-                    focusRingColor: 'rgba(22, 163, 74, 0.3)',
                   }}
                   placeholder="e.g., 123 Main St"
                 />
@@ -292,7 +290,6 @@ const ProductModal: React.FC<ProductModalProps> = ({ isOpen, onClose, onSave, pr
                       backgroundColor: themeColors.background.primary,
                       borderColor: themeColors.border.primary,
                       color: themeColors.text.primary,
-                      focusRingColor: 'rgba(22, 163, 74, 0.3)',
                     }}
                     placeholder="e.g., Toronto"
                   />
@@ -315,7 +312,6 @@ const ProductModal: React.FC<ProductModalProps> = ({ isOpen, onClose, onSave, pr
                         backgroundColor: themeColors.background.primary,
                         borderColor: themeColors.border.primary,
                         color: themeColors.text.primary,
-                        focusRingColor: 'rgba(22, 163, 74, 0.3)',
                       }}
                     >
                       <option value="">Select Province</option>
@@ -356,7 +352,6 @@ const ProductModal: React.FC<ProductModalProps> = ({ isOpen, onClose, onSave, pr
                       backgroundColor: themeColors.background.primary,
                       borderColor: themeColors.border.primary,
                       color: themeColors.text.primary,
-                      focusRingColor: 'rgba(22, 163, 74, 0.3)',
                     }}
                     placeholder="e.g., A1A 1A1"
                     pattern="[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d"
@@ -381,7 +376,6 @@ const ProductModal: React.FC<ProductModalProps> = ({ isOpen, onClose, onSave, pr
                       backgroundColor: themeColors.background.primary,
                       borderColor: themeColors.border.primary,
                       color: themeColors.text.primary,
-                      focusRingColor: 'rgba(22, 163, 74, 0.3)',
                     }}
                     placeholder="e.g., Canada"
                   />
